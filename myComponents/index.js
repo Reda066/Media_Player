@@ -56,13 +56,6 @@ template.innerHTML = `
 
     }
 
-    #moins5s{
-      margin-left:35%;
-    }
-
-    #plus5s{
-      margin-right:37%;
-    }
     #knobStereo{
         left: 90%;
     }
@@ -71,12 +64,20 @@ template.innerHTML = `
       margin-top: 10px;
     }
 
+    #moins5s{
+      margin-left:30%;
+    }
+
+    #slowMode{
+      margin-left:33%;
+    }
+
     .eq{
       font-size : 17px;
       color:red;
       display:inline-block;
       margin-right: 5%;
-      }
+      margin-top:-30px;    }
 
 
   </style>
