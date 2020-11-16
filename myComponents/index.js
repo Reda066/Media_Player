@@ -73,11 +73,12 @@ template.innerHTML = `
     }
 
     .eq{
-      font-size : 17px;
+      font-size : 20px;
       color:red;
       display:inline-block;
       margin-right: 5%;
-      margin-top:-30px;    }
+      margin-left:5%;
+      margin-top:-50px;    }
 
 
   </style>
