@@ -42,16 +42,14 @@ template.innerHTML = `
       font-size: 160%;
     }
 
-    #progressRuler {
-      height:24px;
-      width:100%;
-      margin-top: 5px;
-
-    }
+    .progress {
+      width:70%;
+      height:15px;
+  }
 
     canvas {
       border: 1px solid black;
-      margin-top: 60px;
+      margin-top: 45px;
       width:100%;
 
     }
@@ -73,18 +71,19 @@ template.innerHTML = `
     }
 
     .eq{
-      font-size : 20px;
+      font-size : 9px;
       color:red;
       display:inline-block;
-      margin-right: 5%;
-      margin-left:5%;
+      margin-right: 20%;
+      margin-left:20%;
       margin-top:-50px;    }
 
+      #a{
+        margin-left:20%;
+      }
 
   </style>
-
-    <progress id="progressRuler" max=100 value=0 step=1 ></progress>
-
+    
     <audio id="myPlayer" preload="auto" crossorigin>
         <source src="./myComponents/assets/audio/AC_DC.mp3" type="audio/mp3" />
     </audio>
@@ -93,40 +92,43 @@ template.innerHTML = `
 
     <webaudio-knob id="knobStereo" tooltip="Balance:%s" src="./assets/imgs/balance.png" sprites="127" value=0 min="-1" max="1" step=0.01>
     Balance G/D</webaudio-knob>
+
     <div class="eq">
-    
+
     <label>60Hz</label>
-    <input class="custom-slider custom-slider-bullet" type="range" value="0" step="1" min="-30" max="30" id="hz60"></input>
+    <webaudio-knob id="hz60" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
     <output id="gain0">0 dB</output>
-    
+
     <label>170Hz</label>
-    <input class="custom-slider custom-slider-bullet" type="range" value="0" step="1" min="-30" max="30" id="hz70"></input>
+    <webaudio-knob id="hz70" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
     <output id="gain1">30 dB</output>
 
     <label>350Hz</label>
-    <input class="custom-slider custom-slider-bullet" type="range" value="0" step="1" min="-30" max="30" id="hz350"></input>
+    <webaudio-knob id="hz350" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
     <output id="gain1">0 dB</output>
 
     <label>1000Hz</label>
-    <input class="custom-slider custom-slider-bullet" type="range" value="0" step="1" min="-30" max="30" id="hz1000"></input>
+    <webaudio-knob id="hz1000" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
     <output id="gain0">0 dB</output>
     
-    <label>3500Hz</label>
-    <input class="custom-slider custom-slider-bullet" type="range" value="0" step="1" min="-30" max="30" id="hz3500"></input>
+    <label id ="a">3500Hz</label>
+    <webaudio-knob id="hz3500" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
     <output id="gain1">0 dB</output>
 
     <label>10000Hz</label>
-    <input class="custom-slider custom-slider-bullet" type="range" value="0" step="1" min="-30" max="30" id="hz10000"></input>
+    <webaudio-knob id="hz10000" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
     <output id="gain1">0 dB</output>
 
     </div>
-    <!-- FONCTIONNE PAS
-    <webaudio-knob id="hz60" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step=0.01 width=200 height=30></webaudio-knob>
-    -->
+
+    
 
 
 
         <canvas id="myCanvas" width=1500 height=540></canvas>
+        <webaudio-slider class="progress" height="20" width="1690" id="progressRuler" min="0" step="0.01" value="0" src="./assets/imgs/slider.png" ></webaudio-slider>
+        <br>
+        <br>
         <button id="playButton">⏵</button>
         <button id="pauseButton">⏸</button>
         <button id="mute">🔇</button>
@@ -340,32 +342,32 @@ class MyAudioPlayer extends HTMLElement {
 
 
    //60Hz
-   this.shadowRoot.querySelector("#hz60").addEventListener("click", (event) => {
+   this.shadowRoot.querySelector("#hz60").addEventListener("change", (event) => {
     this.changeGain(event.target.value, 0);
   });
 
    //170Hz
-   this.shadowRoot.querySelector("#hz70").addEventListener("click", (event) => {
+   this.shadowRoot.querySelector("#hz70").addEventListener("change", (event) => {
     this.changeGain(event.target.value, 1);
   });
 
    //350Hz
-   this.shadowRoot.querySelector("#hz350").addEventListener("click", (event) => {
+   this.shadowRoot.querySelector("#hz350").addEventListener("change", (event) => {
     this.changeGain(event.target.value, 2);
   });
 
    //1000Hz
-   this.shadowRoot.querySelector("#hz1000").addEventListener("click", (event) => {
+   this.shadowRoot.querySelector("#hz1000").addEventListener("change", (event) => {
     this.changeGain(event.target.value, 3);
   });
 
    //3500Hz
-   this.shadowRoot.querySelector("#hz3500").addEventListener("click", (event) => {
+   this.shadowRoot.querySelector("#hz3500").addEventListener("change", (event) => {
     this.changeGain(event.target.value, 4);
   });
 
    //10000Hz
-   this.shadowRoot.querySelector("#hz10000").addEventListener("click", (event) => {
+   this.shadowRoot.querySelector("#hz10000").addEventListener("change", (event) => {
     this.changeGain(event.target.value, 5);
   });
 
@@ -385,7 +387,15 @@ class MyAudioPlayer extends HTMLElement {
         this.setBalance(event.target.value);
       });
 
+      this.shadowRoot.querySelector("#progressRuler").addEventListener("change", (event) => {
+        this.setActualTime(event.target.value);
+        console.log("time = " + event.target.currentTime)
+        
+
+    });
+
     //progressbar  
+    
     this.player.addEventListener('timeupdate', (event) => {
       console.log("time = " + event.target.currentTime)
       let p = this.shadowRoot.querySelector("#progressRuler");
@@ -398,6 +408,7 @@ class MyAudioPlayer extends HTMLElement {
 
 
     })
+    
   }
 
   // API
@@ -408,6 +419,10 @@ class MyAudioPlayer extends HTMLElement {
   setBalance(val) {
     this.pannerNode.pan.value = val;
   }
+
+  setActualTime(val) {
+        this.player.currentTime = val;
+    }
 
   play() {
     this.player.play();
