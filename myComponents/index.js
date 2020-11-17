@@ -390,8 +390,6 @@ class MyAudioPlayer extends HTMLElement {
       this.shadowRoot.querySelector("#progressRuler").addEventListener("change", (event) => {
         this.setActualTime(event.target.value);
         console.log("time = " + event.target.currentTime)
-        
-
     });
 
     //progressbar  
