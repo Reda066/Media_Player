@@ -105,19 +105,19 @@ template.innerHTML = `
 
     <label>350Hz</label>
     <webaudio-knob id="hz350" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
-    <output id="gain1">0 dB</output>
+    <output id="gain2">0 dB</output>
 
     <label>1000Hz</label>
     <webaudio-knob id="hz1000" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
-    <output id="gain0">0 dB</output>
+    <output id="gain3">0 dB</output>
     
     <label id ="a">3500Hz</label>
     <webaudio-knob id="hz3500" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
-    <output id="gain1">0 dB</output>
+    <output id="gain4">0 dB</output>
 
     <label>10000Hz</label>
     <webaudio-knob id="hz10000" tooltip="Equalizer:%s" src="./assets/imgs/gain0.png" sprites="60" value="0" step="1" min="-30" max="30" step="1" width=200 height=30></webaudio-knob>
-    <output id="gain1">0 dB</output>
+    <output id="gain5">0 dB</output>
 
     </div>
 
